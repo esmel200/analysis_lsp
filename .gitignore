@@ -1,3 +1,6 @@
+# CSV data files (contain PII)
+*.csv
+
 # Python virtual environment
 venv/
 env/
