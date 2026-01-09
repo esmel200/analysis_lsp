@@ -87,8 +87,9 @@ for idx, row in raw_df.iterrows():
             'incident_day': date.day,
 
             # Department/Agency
-            'troop': row['Troop'],
-            'department_desc': row['Troop'].lower(),
+            # Normalize Troop N -> Troop NOLA (both refer to New Orleans)
+            'troop': 'Troop NOLA' if row['Troop'] == 'Troop N' else row['Troop'],
+            'department_desc': 'troop nola' if row['Troop'] == 'Troop N' else row['Troop'].lower(),
             'agency': 'louisiana-state-pd',
 
             # Citizen-specific data (expanded from multi-subject incidents)
